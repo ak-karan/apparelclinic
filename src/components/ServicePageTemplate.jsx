@@ -93,7 +93,11 @@ export default function ServicePageTemplate({
                 <motion.div key={i} {...fadeUp(i * 0.07)} className="card p-6 bg-white border border-gray-200">
                   <div className="text-3xl mb-3">{h.icon}</div>
                   <h3 className="font-heading font-bold mb-2 text-gray-900">{h.title}</h3>
+<<<<<<< HEAD
                   <p className="text-xl text-gray-600">{h.desc}</p>
+=======
+                  <p className="text-sm text-gray-600">{h.desc}</p>
+>>>>>>> c7196ace7f15e8d0bf9a368520ebf09835ded31a
                 </motion.div>
               ))}
             </div>
@@ -114,7 +118,11 @@ export default function ServicePageTemplate({
                     {i + 1}
                   </div>
                   <div className="text-2xl mb-3 mt-1">{s.icon}</div>
+<<<<<<< HEAD
                   <h3 className="font-semibold mb-2 text-xl text-gray-900">{s.title}</h3>
+=======
+                  <h3 className="font-semibold mb-2 text-sm text-gray-900">{s.title}</h3>
+>>>>>>> c7196ace7f15e8d0bf9a368520ebf09835ded31a
                   <p className="text-xs text-gray-600">{s.desc}</p>
                 </motion.div>
               ))}
@@ -134,14 +142,22 @@ export default function ServicePageTemplate({
                 <motion.div key={i} {...fadeUp(i * 0.05)}
                   className="flex justify-between items-center px-6 py-4 rounded-2xl bg-gray-50 border border-gray-200">
                   <div>
+<<<<<<< HEAD
                     <div className="font-medium text-xl text-gray-900">{p.item}</div>
+=======
+                    <div className="font-medium text-sm text-gray-900">{p.item}</div>
+>>>>>>> c7196ace7f15e8d0bf9a368520ebf09835ded31a
                     {p.note && <div className="text-xs mt-0.5 text-gray-500">{p.note}</div>}
                   </div>
                   <div className="font-heading text-xl font-bold text-blue-600">₹{p.price}</div>
                 </motion.div>
               ))}
             </div>
+<<<<<<< HEAD
             <div className="mt-6 rounded-xl px-5 py-4 text-xl bg-blue-50 border border-blue-200 text-gray-700">
+=======
+            <div className="mt-6 rounded-xl px-5 py-4 text-sm bg-blue-50 border border-blue-200 text-gray-700">
+>>>>>>> c7196ace7f15e8d0bf9a368520ebf09835ded31a
               🚚 <strong className="text-blue-600">Free pickup & delivery</strong> for orders above 6kg. Call for custom/bulk pricing.
             </div>
           </div>
@@ -157,8 +173,13 @@ export default function ServicePageTemplate({
             <div className="space-y-4">
               {faqs.map((f, i) => (
                 <motion.div key={i} {...fadeUp(i * 0.05)} className="card p-6 bg-white border border-gray-200">
+<<<<<<< HEAD
                   <h3 className="font-semibold text-xl mb-2 text-gray-900">Q: {f.q}</h3>
                   <p className="text-xl text-gray-600">A: {f.a}</p>
+=======
+                  <h3 className="font-semibold text-sm mb-2 text-gray-900">Q: {f.q}</h3>
+                  <p className="text-sm text-gray-600">A: {f.a}</p>
+>>>>>>> c7196ace7f15e8d0bf9a368520ebf09835ded31a
                 </motion.div>
               ))}
             </div>
