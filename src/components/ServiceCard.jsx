@@ -23,11 +23,7 @@ function ServiceCard({ service, index, delay = 0.07 }) {
           <h3 className="font-heading font-semibold mb-1 group-hover:text-blue-600 transition-colors text-gray-900">
             {service.title}
           </h3>
-<<<<<<< HEAD
-          <p className="text-xl text-gray-600">{service.desc}</p>
-=======
           <p className="text-sm text-gray-600">{service.desc}</p>
->>>>>>> c7196ace7f15e8d0bf9a368520ebf09835ded31a
           <motion.div 
             animate={{ x: isHovered ? 5 : 0 }}
             className="flex items-center gap-1 mt-3 text-xs font-medium text-blue-600">

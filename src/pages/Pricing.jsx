@@ -87,20 +87,12 @@ export default function Pricing() {
             ].map((r, i) => (
               <motion.div key={i} {...fadeUp(i * 0.08)} className="card p-5 text-center">
                 <div className="font-heading text-2xl font-bold mb-1" style={{ color: r.color }}>{r.rate}</div>
-<<<<<<< HEAD
-                <div className="text-xl font-medium" style={{ color: 'var(--heading)' }}>{r.name}</div>
-=======
                 <div className="text-sm font-medium" style={{ color: 'var(--heading)' }}>{r.name}</div>
->>>>>>> c7196ace7f15e8d0bf9a368520ebf09835ded31a
               </motion.div>
             ))}
           </div>
 
-<<<<<<< HEAD
-          <div className="rounded-xl p-4 text-xl mb-10"
-=======
           <div className="rounded-xl p-4 text-sm mb-10"
->>>>>>> c7196ace7f15e8d0bf9a368520ebf09835ded31a
             style={{ background: 'rgba(84,185,99,0.08)', border: '1px solid var(--border)', color: 'var(--text)' }}>
             ℹ️ <strong style={{ color: 'var(--heading)' }}>Dry clean @ ₹160/kg</strong> to make it economical.
             * Only regular garments (excluding embellished/coat/saree/heavy bridal/lehenga/blazer/sherwani).
@@ -116,11 +108,7 @@ export default function Pricing() {
             <div className="flex flex-wrap gap-2">
               {['all', ...PRICE_CATEGORIES.map(c => c.name)].map(c => (
                 <button key={c} onClick={() => setCat(c)}
-<<<<<<< HEAD
-                  className="px-4 py-2 rounded-full text-xl font-medium transition-all"
-=======
                   className="px-4 py-2 rounded-full text-sm font-medium transition-all"
->>>>>>> c7196ace7f15e8d0bf9a368520ebf09835ded31a
                   style={{ background: cat === c ? 'var(--green)' : 'var(--card-bg)', color: cat === c ? 'var(--bg)' : 'var(--text)', border: '1px solid var(--border)' }}>
                   {c === 'all' ? 'All' : c}
                 </button>
@@ -134,11 +122,7 @@ export default function Pricing() {
               <h2 className="font-heading text-2xl font-bold mb-4" style={{ color: 'var(--heading)' }}>{category.name}</h2>
               <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
                 {category.items.map((item, ii) => (
-<<<<<<< HEAD
-                  <div key={ii} className="flex justify-between items-center px-4 py-3 rounded-xl text-xl"
-=======
                   <div key={ii} className="flex justify-between items-center px-4 py-3 rounded-xl text-sm"
->>>>>>> c7196ace7f15e8d0bf9a368520ebf09835ded31a
                     style={{ background: 'var(--card-bg)', border: '1px solid var(--border)' }}>
                     <span style={{ color: 'var(--text)' }}>{item.name}</span>
                     <span className="font-bold" style={{ color: 'var(--green)' }}>₹{item.price}</span>

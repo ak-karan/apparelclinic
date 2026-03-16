@@ -52,11 +52,7 @@ export default function Terms() {
             {sections.map((s, i) => (
               <motion.div key={i} {...fadeUp(i * 0.04)} className="card p-7">
                 <h2 className="font-heading text-xl font-bold mb-3" style={{ color: 'var(--heading)' }}>{s.title}</h2>
-<<<<<<< HEAD
-                <p className="text-xl leading-relaxed" style={{ color: 'var(--text)' }}>{s.content}</p>
-=======
                 <p className="text-sm leading-relaxed" style={{ color: 'var(--text)' }}>{s.content}</p>
->>>>>>> c7196ace7f15e8d0bf9a368520ebf09835ded31a
               </motion.div>
             ))}
           </div>

@@ -57,11 +57,7 @@ export default function FAQ() {
                 <button onClick={() => setOpen(open === i ? null : i)}
                   className="w-full text-left px-6 py-5 rounded-2xl flex items-start justify-between gap-4 transition-all"
                   style={{ background: open === i ? 'rgba(84,185,99,0.1)' : 'var(--card-bg)', border: `1px solid ${open === i ? 'rgba(84,185,99,0.4)' : 'var(--border)'}` }}>
-<<<<<<< HEAD
-                  <span className="font-medium text-xl" style={{ color: 'var(--heading)' }}>{faq.q}</span>
-=======
                   <span className="font-medium text-sm" style={{ color: 'var(--heading)' }}>{faq.q}</span>
->>>>>>> c7196ace7f15e8d0bf9a368520ebf09835ded31a
                   {open === i
                     ? <ChevronUp size={18} style={{ color: 'var(--green)', flexShrink: 0 }} />
                     : <ChevronDown size={18} style={{ color: 'var(--text)', flexShrink: 0 }} />}
@@ -69,11 +65,7 @@ export default function FAQ() {
                 {open === i && (
                   <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }}
                     transition={{ duration: 0.25 }}
-<<<<<<< HEAD
-                    className="px-6 py-4 -mt-2 rounded-b-2xl text-xl leading-relaxed"
-=======
                     className="px-6 py-4 -mt-2 rounded-b-2xl text-sm leading-relaxed"
->>>>>>> c7196ace7f15e8d0bf9a368520ebf09835ded31a
                     style={{ background: 'rgba(84,185,99,0.06)', border: '1px solid var(--border)', borderTop: 'none', color: 'var(--text)' }}>
                     {faq.a}
                   </motion.div>
@@ -84,11 +76,7 @@ export default function FAQ() {
 
           <div className="text-center card p-8">
             <p className="font-heading text-xl font-bold mb-2" style={{ color: 'var(--heading)' }}>Aur kuch poochna hai?</p>
-<<<<<<< HEAD
-            <p className="text-xl mb-6" style={{ color: 'var(--text)' }}>Hamari team 24/7 available hai aapki help ke liye.</p>
-=======
             <p className="text-sm mb-6" style={{ color: 'var(--text)' }}>Hamari team 24/7 available hai aapki help ke liye.</p>
->>>>>>> c7196ace7f15e8d0bf9a368520ebf09835ded31a
             <div className="flex flex-wrap justify-center gap-4">
               <a href={`tel:${CONTACT.phone1}`} className="btn-primary"><Phone size={15} /> {CONTACT.phone1}</a>
               <a href={CONTACT.whatsapp} target="_blank" rel="noreferrer" className="btn-outline">💬 WhatsApp</a>

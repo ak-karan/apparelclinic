@@ -28,22 +28,14 @@ function ReviewCard({ review, index, delay = 0.08 }) {
         </div>
 
         {/* Review Text */}
-<<<<<<< HEAD
-        <p className="text-xl mb-4 leading-relaxed line-clamp-3" style={{ color: 'var(--text)' }}>
-=======
         <p className="text-sm mb-4 leading-relaxed line-clamp-3" style={{ color: 'var(--text)' }}>
->>>>>>> c7196ace7f15e8d0bf9a368520ebf09835ded31a
           "{review.text}"
         </p>
 
         {/* User Info */}
         <div className="flex items-center justify-between mt-auto">
           <div>
-<<<<<<< HEAD
-            <div className="font-semibold text-xl" style={{ color: 'var(--heading)' }}>
-=======
             <div className="font-semibold text-sm" style={{ color: 'var(--heading)' }}>
->>>>>>> c7196ace7f15e8d0bf9a368520ebf09835ded31a
               {review.name}
             </div>
             <div className="text-xs opacity-60">{review.date}</div>
@@ -51,11 +43,7 @@ function ReviewCard({ review, index, delay = 0.08 }) {
           
           {/* Avatar */}
           <div 
-<<<<<<< HEAD
-            className="w-10 h-10 rounded-full flex items-center justify-center font-bold text-xl"
-=======
             className="w-10 h-10 rounded-full flex items-center justify-center font-bold text-sm"
->>>>>>> c7196ace7f15e8d0bf9a368520ebf09835ded31a
             style={{ background: 'var(--green)', color: 'var(--bg)' }}
           >
             {review.name.charAt(0)}

@@ -69,22 +69,14 @@ export default function PrepaidPlans() {
                 <p className="text-xs mb-6" style={{ color: 'var(--text)' }}>Validity: {plan.validity}</p>
                 <ul className="space-y-3 mb-8">
                   {[`${plan.washKg} kg wash credits`, `${plan.pressing} pressing pieces`, 'Free pickup & delivery', 'Priority scheduling', 'WhatsApp order tracking'].map((f, j) => (
-<<<<<<< HEAD
-                    <li key={j} className="flex items-center gap-3 text-xl" style={{ color: 'var(--text)' }}>
-=======
                     <li key={j} className="flex items-center gap-3 text-sm" style={{ color: 'var(--text)' }}>
->>>>>>> c7196ace7f15e8d0bf9a368520ebf09835ded31a
                       <CheckCircle size={15} style={{ color: 'var(--green)', flexShrink: 0 }} />{f}
                     </li>
                   ))}
                 </ul>
                 <a href={`${CONTACT.whatsapp}?text=I want to buy ${plan.name} Plan ₹${plan.price}`}
                   target="_blank" rel="noreferrer"
-<<<<<<< HEAD
-                  className="block text-center py-3 rounded-xl font-semibold text-xl transition-all"
-=======
                   className="block text-center py-3 rounded-xl font-semibold text-sm transition-all"
->>>>>>> c7196ace7f15e8d0bf9a368520ebf09835ded31a
                   style={plan.badge
                     ? { background: 'var(--green)', color: 'var(--bg)', textDecoration: 'none' }
                     : { background: 'var(--card-bg)', border: '1px solid var(--border)', color: 'var(--heading)', textDecoration: 'none' }}>
@@ -107,11 +99,7 @@ export default function PrepaidPlans() {
               <motion.div key={i} {...fadeUp(i * 0.08)} className="card p-6 text-center">
                 <div className="font-heading text-4xl font-bold mb-3" style={{ color: 'rgba(84,185,99,0.3)' }}>{s.step}</div>
                 <h3 className="font-semibold mb-2" style={{ color: 'var(--heading)' }}>{s.title}</h3>
-<<<<<<< HEAD
-                <p className="text-xl" style={{ color: 'var(--text)' }}>{s.desc}</p>
-=======
                 <p className="text-sm" style={{ color: 'var(--text)' }}>{s.desc}</p>
->>>>>>> c7196ace7f15e8d0bf9a368520ebf09835ded31a
               </motion.div>
             ))}
           </div>

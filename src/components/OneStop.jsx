@@ -83,11 +83,7 @@ function OneStop() {
               Laundry & Dry Clean
             </span>
           </h2>
-<<<<<<< HEAD
-          <p className="mt-4 max-w-2xl mx-auto text-xl sm:text-base text-gray-600">
-=======
           <p className="mt-4 max-w-2xl mx-auto text-sm sm:text-base text-gray-600">
->>>>>>> c7196ace7f15e8d0bf9a368520ebf09835ded31a
             From delicate silk sarees to heavy winter coats, shoes to sofas — we care for everything with 25 years of expertise.
           </p>
         </motion.div>
@@ -117,11 +113,7 @@ function OneStop() {
         <motion.div 
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: showScrollHint ? 0.6 : 0, y: 0 }}
-<<<<<<< HEAD
-          className="text-center mt-6 text-xl md:hidden">
-=======
           className="text-center mt-6 text-sm md:hidden">
->>>>>>> c7196ace7f15e8d0bf9a368520ebf09835ded31a
           <span className="inline-flex items-center gap-2 px-4 py-2 bg-blue-50 border border-blue-200 rounded-full text-blue-600">
             <span>←</span>
             <span>Swipe to explore more services</span>

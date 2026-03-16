@@ -84,15 +84,9 @@ export default function Contact() {
                       <Icon size={20} style={{ color: 'var(--green)' }} />
                     </div>
                     <div>
-<<<<<<< HEAD
-                      <div className="font-semibold text-xl mb-1" style={{ color: 'var(--heading)' }}>{label}</div>
-                      {lines.map((l, j) => (
-                        <div key={j} className="text-xl" style={{ color: 'var(--text)' }}>{l}</div>
-=======
                       <div className="font-semibold text-sm mb-1" style={{ color: 'var(--heading)' }}>{label}</div>
                       {lines.map((l, j) => (
                         <div key={j} className="text-sm" style={{ color: 'var(--text)' }}>{l}</div>
->>>>>>> c7196ace7f15e8d0bf9a368520ebf09835ded31a
                       ))}
                     </div>
                   </motion.a>
@@ -117,19 +111,11 @@ export default function Contact() {
             <motion.div {...fadeUp(0.2)}>
               <div className="card p-8">
                 <h2 className="font-heading text-2xl font-bold mb-2" style={{ color: 'var(--heading)' }}>Send Us a Message</h2>
-<<<<<<< HEAD
-                <p className="text-xl mb-6" style={{ color: 'var(--text)' }}>We'll reply within 30 minutes</p>
-
-                {status === 'success' && (
-                  <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }}
-                    className="mb-4 px-4 py-3 rounded-xl text-xl flex items-center gap-2"
-=======
                 <p className="text-sm mb-6" style={{ color: 'var(--text)' }}>We'll reply within 30 minutes</p>
 
                 {status === 'success' && (
                   <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }}
                     className="mb-4 px-4 py-3 rounded-xl text-sm flex items-center gap-2"
->>>>>>> c7196ace7f15e8d0bf9a368520ebf09835ded31a
                     style={{ background: 'rgba(84,185,99,0.1)', border: '1px solid rgba(84,185,99,0.4)', color: 'var(--green)' }}>
                     <CheckCircle size={15} /> Message sent! Hum jald hi contact karenge.
                   </motion.div>
@@ -137,11 +123,7 @@ export default function Contact() {
 
                 {status === 'error' && (
                   <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }}
-<<<<<<< HEAD
-                    className="mb-4 px-4 py-3 rounded-xl text-xl flex items-center gap-2"
-=======
                     className="mb-4 px-4 py-3 rounded-xl text-sm flex items-center gap-2"
->>>>>>> c7196ace7f15e8d0bf9a368520ebf09835ded31a
                     style={{ background: 'rgba(239,68,68,0.1)', border: '1px solid rgba(239,68,68,0.3)', color: '#f87171' }}>
                     <AlertCircle size={15} /> {errMsg}
                   </motion.div>
@@ -189,11 +171,7 @@ export default function Contact() {
                   </div>
 
                   <motion.button type="submit" disabled={loading}
-<<<<<<< HEAD
-                    className="w-full py-3.5 rounded-xl font-semibold text-xl disabled:opacity-60"
-=======
                     className="w-full py-3.5 rounded-xl font-semibold text-sm disabled:opacity-60"
->>>>>>> c7196ace7f15e8d0bf9a368520ebf09835ded31a
                     style={{ background: 'var(--green)', color: 'var(--bg)' }}
                     whileHover={{ scale: loading ? 1 : 1.02 }} whileTap={{ scale: 0.98 }}>
                     {loading ? '⏳ Sending...' : 'Send Message'}

@@ -72,11 +72,7 @@ export default function About() {
                 <h3 className="font-heading text-2xl font-bold mb-6" style={{ color: 'var(--heading)' }}>Our Advanced Services</h3>
                 <ul className="space-y-3">
                   {['Dry Cleaning (PERC-based)', 'Silicone Softener Wash', 'Anti-Bacterial Wash', 'Enzyme (Anti-Pilling) Wash', 'Steam Ironing & Pressing', 'Shoe Spa (Branded) — ₹250', 'Bulk Commercial Laundry', 'Free Pickup & Delivery (>6kg)'].map((item, i) => (
-<<<<<<< HEAD
-                    <li key={i} className="flex items-center gap-3 text-xl" style={{ color: 'var(--text)' }}>
-=======
                     <li key={i} className="flex items-center gap-3 text-sm" style={{ color: 'var(--text)' }}>
->>>>>>> c7196ace7f15e8d0bf9a368520ebf09835ded31a
                       <CheckCircle size={16} style={{ color: 'var(--green)', flexShrink: 0 }} />{item}
                     </li>
                   ))}
@@ -97,11 +93,7 @@ export default function About() {
               <motion.div key={i} {...fadeUp(i * 0.07)} className="card p-6">
                 <span className="text-3xl mb-3 block">{w.icon}</span>
                 <h3 className="font-heading font-bold mb-2" style={{ color: 'var(--heading)' }}>{w.title}</h3>
-<<<<<<< HEAD
-                <p className="text-xl" style={{ color: 'var(--text)' }}>{w.desc}</p>
-=======
                 <p className="text-sm" style={{ color: 'var(--text)' }}>{w.desc}</p>
->>>>>>> c7196ace7f15e8d0bf9a368520ebf09835ded31a
               </motion.div>
             ))}
           </div>
