@@ -3,5 +3,16 @@
   "outputDirectory": "dist",
   "devCommand": "npm run dev",
   "installCommand": "npm install",
-  "framework": "vite"
+  "framework": "vite",
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/"
+    }
+  ],
+  "build": {
+    "env": {
+      "NODE_VERSION": "18"
+    }
+  }
 }
