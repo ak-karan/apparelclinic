@@ -1,5 +1,5 @@
 // api/contact.js
-import sendEmail from './send-email.js';
+import sendEmail from './sendEmail.js';
 
 export default async function handler(req, res) {
   // Only allow POST

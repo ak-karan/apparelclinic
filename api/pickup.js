@@ -1,5 +1,5 @@
 // api/pickup.js
-import sendEmail from './send-email.js';
+import sendEmail from './sendEmail.js';
 
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
