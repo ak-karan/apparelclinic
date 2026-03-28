@@ -29,7 +29,11 @@ const contactSchemas = [
 
 export default function Contact() {
   const [form, setForm] = useState({ name: '', phone: '', service: '', message: '' })
+<<<<<<< HEAD
   const { submit, loading, status, errMsg, successMsg } = useForm('contact')
+=======
+  const { submit, loading, status, errMsg } = useForm('contact')
+>>>>>>> 18afc02104a17f47e0666bbfa449ac03fefd4821
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -117,7 +121,11 @@ export default function Contact() {
                   <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }}
                     className="mb-4 px-4 py-3 rounded-xl text-sm flex items-center gap-2"
                     style={{ background: 'rgba(84,185,99,0.1)', border: '1px solid rgba(84,185,99,0.4)', color: 'var(--green)' }}>
+<<<<<<< HEAD
                     <CheckCircle size={15} /> {successMsg || 'Message sent! Hum jald hi contact karenge.'}
+=======
+                    <CheckCircle size={15} /> Message sent! Hum jald hi contact karenge.
+>>>>>>> 18afc02104a17f47e0666bbfa449ac03fefd4821
                   </motion.div>
                 )}
 

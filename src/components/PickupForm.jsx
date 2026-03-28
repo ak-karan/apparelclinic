@@ -8,7 +8,11 @@ export default function PickupForm() {
   const [form, setForm] = useState({
     name: '', phone: '', address: '', service: '', date: '', notes: '',
   })
+<<<<<<< HEAD
   const { submit, loading, status, errMsg, successMsg } = useForm('pickup')
+=======
+  const { submit, loading, status, errMsg } = useForm('pickup')
+>>>>>>> 18afc02104a17f47e0666bbfa449ac03fefd4821
 
 const handleSubmit = async (e) => {
     e.preventDefault()
@@ -43,7 +47,11 @@ const handleSubmit = async (e) => {
           className="mb-4 px-4 py-3 rounded-xl text-sm flex items-center gap-2 bg-green-50 border border-green-200 text-green-600"
         >
           <CheckCircle size={16} />
+<<<<<<< HEAD
           {successMsg || 'Pickup request submitted! Hum 30 min mein contact karenge.'}
+=======
+          ✅ Pickup request submitted! Hum 30 min mein contact karenge.
+>>>>>>> 18afc02104a17f47e0666bbfa449ac03fefd4821
         </motion.div>
       )}
 
@@ -160,4 +168,8 @@ const handleSubmit = async (e) => {
       </form>
     </div>
   )
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 18afc02104a17f47e0666bbfa449ac03fefd4821

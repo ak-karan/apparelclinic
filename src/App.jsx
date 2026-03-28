@@ -30,7 +30,11 @@ const SteamIroning   = lazy(() => import('./pages/services/SteamIroning'))
 function App() {
   return (
     <HelmetProvider>
+<<<<<<< HEAD
       <Router future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
+=======
+      <Router>
+>>>>>>> 18afc02104a17f47e0666bbfa449ac03fefd4821
         <ScrollToTop />
         <div style={{ backgroundColor: 'var(--bg)', minHeight: '100vh' }}>
           <Navbar />

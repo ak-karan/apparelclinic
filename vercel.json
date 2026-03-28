@@ -4,12 +4,19 @@
   "framework": "vite",
   "rewrites": [
     {
+<<<<<<< HEAD
       "source": "/api/(.*)",
       "destination": "/api/$1"
     },
     {
+=======
+>>>>>>> 18afc02104a17f47e0666bbfa449ac03fefd4821
       "source": "/(.*)",
       "destination": "/index.html"
     }
   ]
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 18afc02104a17f47e0666bbfa449ac03fefd4821
