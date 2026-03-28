@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import { useState } from 'react'
 import { CONTACT } from '../data'
 
@@ -43,42 +42,27 @@ function openEmailFallback(formType, data) {
   const url = `mailto:${CONTACT.email}?subject=${subject}&body=${body}`
   window.location.href = url
 }
-=======
-// src/hooks/useForm.js
-import { useState } from 'react'
->>>>>>> 18afc02104a17f47e0666bbfa449ac03fefd4821
 
 export function useForm(formType) {
   const [loading, setLoading] = useState(false)
   const [status, setStatus] = useState(null)
   const [errMsg, setErrMsg] = useState('')
-<<<<<<< HEAD
   const [successMsg, setSuccessMsg] = useState('')
-=======
->>>>>>> 18afc02104a17f47e0666bbfa449ac03fefd4821
 
   const submit = async (data) => {
     setLoading(true)
     setStatus(null)
     setErrMsg('')
-<<<<<<< HEAD
     setSuccessMsg('')
 
     const endpoint = ENDPOINTS[formType]
 
     try {
-=======
-    
-    try {
-      const endpoint = formType === 'pickup' ? '/api/pickup' : '/api/contact'
-      
->>>>>>> 18afc02104a17f47e0666bbfa449ac03fefd4821
       const response = await fetch(endpoint, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-<<<<<<< HEAD
         body: JSON.stringify(data),
       })
 
@@ -103,34 +87,10 @@ export function useForm(formType) {
       setStatus('success')
       setSuccessMsg('Mail app opened because the email server is not reachable.')
       return true
-=======
-        body: JSON.stringify(data)
-      })
-      
-      const result = await response.json()
-      
-      if (result.success) {
-        setStatus('success')
-        return true
-      } else {
-        setStatus('error')
-        setErrMsg(result.message || 'Something went wrong')
-        return false
-      }
-    } catch (error) {
-      setStatus('error')
-      setErrMsg('Network error. Please try again.')
-      return false
->>>>>>> 18afc02104a17f47e0666bbfa449ac03fefd4821
     } finally {
       setLoading(false)
     }
   }
 
-<<<<<<< HEAD
   return { submit, loading, status, errMsg, successMsg }
 }
-=======
-  return { submit, loading, status, errMsg }
-}
->>>>>>> 18afc02104a17f47e0666bbfa449ac03fefd4821

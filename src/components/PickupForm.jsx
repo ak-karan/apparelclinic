@@ -6,15 +6,16 @@ import { CONTACT } from '../data'
 
 export default function PickupForm() {
   const [form, setForm] = useState({
-    name: '', phone: '', address: '', service: '', date: '', notes: '',
+    name: '',
+    phone: '',
+    address: '',
+    service: '',
+    date: '',
+    notes: '',
   })
-<<<<<<< HEAD
   const { submit, loading, status, errMsg, successMsg } = useForm('pickup')
-=======
-  const { submit, loading, status, errMsg } = useForm('pickup')
->>>>>>> 18afc02104a17f47e0666bbfa449ac03fefd4821
 
-const handleSubmit = async (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
     const ok = await submit({
       name: form.name,
@@ -23,44 +24,36 @@ const handleSubmit = async (e) => {
       service_type: form.service || 'Not specified',
       preferred_date: form.date || 'Flexible',
       special_instructions: form.notes || 'None',
-      botcheck: ''  // Honeypot
+      botcheck: '',
     })
-    if (ok) setForm({ name: '', phone: '', address: '', service: '', date: '', notes: '' })
+    if (ok) {
+      setForm({ name: '', phone: '', address: '', service: '', date: '', notes: '' })
+    }
   }
 
-  const set = (k) => (e) => setForm((p) => ({ ...p, [k]: e.target.value }))
+  const set = (key) => (e) => setForm((prev) => ({ ...prev, [key]: e.target.value }))
 
   return (
-    <div className="rounded-2xl p-7 shadow-lg bg-white border border-gray-200">
-      <h2 className="font-heading text-2xl font-bold mb-1 text-gray-900">
-        Schedule Free Pickup
-      </h2>
-      <p className="text-xs mb-6 text-gray-500">
-        Fill the form — we'll confirm within 30 mins via WhatsApp
-      </p>
+    <div className="rounded-2xl border border-gray-200 bg-white p-7 shadow-lg">
+      <h2 className="font-heading mb-1 text-2xl font-bold text-gray-900">Schedule Free Pickup</h2>
+      <p className="mb-6 text-xs text-gray-500">Fill the form and we'll confirm within 30 mins via WhatsApp</p>
 
-      {/* Success Message */}
       {status === 'success' && (
-        <motion.div 
-          initial={{ opacity: 0, y: -10 }} 
+        <motion.div
+          initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
-          className="mb-4 px-4 py-3 rounded-xl text-sm flex items-center gap-2 bg-green-50 border border-green-200 text-green-600"
+          className="mb-4 flex items-center gap-2 rounded-xl border border-green-200 bg-green-50 px-4 py-3 text-sm text-green-600"
         >
           <CheckCircle size={16} />
-<<<<<<< HEAD
           {successMsg || 'Pickup request submitted! Hum 30 min mein contact karenge.'}
-=======
-          ✅ Pickup request submitted! Hum 30 min mein contact karenge.
->>>>>>> 18afc02104a17f47e0666bbfa449ac03fefd4821
         </motion.div>
       )}
 
-      {/* Error Message */}
       {status === 'error' && (
-        <motion.div 
-          initial={{ opacity: 0, y: -10 }} 
+        <motion.div
+          initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
-          className="mb-4 px-4 py-3 rounded-xl text-sm flex items-center gap-2 bg-red-50 border border-red-200 text-red-600"
+          className="mb-4 flex items-center gap-2 rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-600"
         >
           <AlertCircle size={16} />
           {errMsg || 'Kuch galat hua. Please call karein.'}
@@ -68,108 +61,107 @@ const handleSubmit = async (e) => {
       )}
 
       <form onSubmit={handleSubmit} className="space-y-4">
-        {/* Honeypot - Hidden field for spam protection */}
         <input type="text" name="botcheck" className="hidden" style={{ display: 'none' }} />
 
-        <div className="grid md:grid-cols-2 gap-4">
+        <div className="grid gap-4 md:grid-cols-2">
           <div>
-            <label className="text-xs mb-1 block text-gray-500">Full Name *</label>
-            <input 
-              className="w-full px-4 py-3 rounded-xl text-sm border border-gray-200 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none transition-all" 
-              placeholder="Apna naam daalo" 
+            <label className="mb-1 block text-xs text-gray-500">Full Name *</label>
+            <input
+              className="w-full rounded-xl border border-gray-200 px-4 py-3 text-sm outline-none transition-all focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
+              placeholder="Apna naam daalo"
               required
-              value={form.name} 
-              onChange={set('name')} 
+              value={form.name}
+              onChange={set('name')}
             />
           </div>
           <div>
-            <label className="text-xs mb-1 block text-gray-500">Phone Number *</label>
-            <input 
-              className="w-full px-4 py-3 rounded-xl text-sm border border-gray-200 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none transition-all" 
-              type="tel" 
-              placeholder="10-digit mobile" 
+            <label className="mb-1 block text-xs text-gray-500">Phone Number *</label>
+            <input
+              className="w-full rounded-xl border border-gray-200 px-4 py-3 text-sm outline-none transition-all focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
+              type="tel"
+              placeholder="10-digit mobile"
               required
-              value={form.phone} 
-              onChange={set('phone')} 
+              value={form.phone}
+              onChange={set('phone')}
             />
           </div>
         </div>
 
         <div>
-          <label className="text-xs mb-1 block text-gray-500">Pickup Address *</label>
-          <textarea 
-            className="w-full px-4 py-3 rounded-xl text-sm border border-gray-200 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none resize-none transition-all" 
-            rows={2} 
-            placeholder="Tower/flat number ke saath complete address" 
+          <label className="mb-1 block text-xs text-gray-500">Pickup Address *</label>
+          <textarea
+            className="w-full resize-none rounded-xl border border-gray-200 px-4 py-3 text-sm outline-none transition-all focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
+            rows={2}
+            placeholder="Tower/flat number ke saath complete address"
             required
-            value={form.address} 
-            onChange={set('address')} 
+            value={form.address}
+            onChange={set('address')}
           />
         </div>
 
-        <div className="grid md:grid-cols-2 gap-4">
+        <div className="grid gap-4 md:grid-cols-2">
           <div>
-            <label className="text-xs mb-1 block text-gray-500">Service Type</label>
-            <select 
-              className="w-full px-4 py-3 rounded-xl text-sm border border-gray-200 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none transition-all bg-white" 
-              value={form.service} 
+            <label className="mb-1 block text-xs text-gray-500">Service Type</label>
+            <select
+              className="w-full rounded-xl border border-gray-200 bg-white px-4 py-3 text-sm outline-none transition-all focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
+              value={form.service}
               onChange={set('service')}
             >
               <option value="">Select service</option>
-              <option>Laundry – Organic Wash (₹110/kg)</option>
-              <option>Laundry – Normal Wash (₹75/kg)</option>
+              <option>Laundry - Organic Wash (Rs 110/kg)</option>
+              <option>Laundry - Normal Wash (Rs 75/kg)</option>
               <option>Dry Cleaning</option>
               <option>Shoe Cleaning / Spa</option>
               <option>Jacket Cleaning</option>
               <option>Bag Cleaning</option>
-              <option>Steam Ironing (₹5/pcs)</option>
+              <option>Steam Ironing (Rs 5/pcs)</option>
               <option>Sofa / Carpet Cleaning</option>
               <option>Other</option>
             </select>
           </div>
           <div>
-            <label className="text-xs mb-1 block text-gray-500">Preferred Date</label>
-            <input 
-              className="w-full px-4 py-3 rounded-xl text-sm border border-gray-200 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none transition-all" 
-              type="date" 
+            <label className="mb-1 block text-xs text-gray-500">Preferred Date</label>
+            <input
+              className="w-full rounded-xl border border-gray-200 px-4 py-3 text-sm outline-none transition-all focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
+              type="date"
               min={new Date().toISOString().split('T')[0]}
-              value={form.date} 
-              onChange={set('date')} 
+              value={form.date}
+              onChange={set('date')}
             />
           </div>
         </div>
 
         <div>
-          <label className="text-xs mb-1 block text-gray-500">Special Instructions (Optional)</label>
-          <input 
-            className="w-full px-4 py-3 rounded-xl text-sm border border-gray-200 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none transition-all" 
+          <label className="mb-1 block text-xs text-gray-500">Special Instructions (Optional)</label>
+          <input
+            className="w-full rounded-xl border border-gray-200 px-4 py-3 text-sm outline-none transition-all focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
             placeholder="e.g. 5kg clothes, delicate sarees, express..."
-            value={form.notes} 
-            onChange={set('notes')} 
+            value={form.notes}
+            onChange={set('notes')}
           />
         </div>
 
-        <motion.button 
-          type="submit" 
+        <motion.button
+          type="submit"
           disabled={loading}
-          className="w-full py-3.5 rounded-xl font-semibold text-sm transition-all disabled:opacity-60 bg-blue-600 text-white hover:bg-blue-700"
-          whileHover={{ scale: loading ? 1 : 1.02 }} 
+          className="w-full rounded-xl bg-blue-600 py-3.5 text-sm font-semibold text-white transition-all hover:bg-blue-700 disabled:opacity-60"
+          whileHover={{ scale: loading ? 1 : 1.02 }}
           whileTap={{ scale: 0.98 }}
         >
-          {loading ? '⏳ Submitting...' : '🚚 Request Free Pickup'}
+          {loading ? 'Submitting...' : 'Request Free Pickup'}
         </motion.button>
 
         <p className="text-center text-xs text-gray-500">
-          Ya directly call karein:{' '}
-          <a href={`tel:${CONTACT.phone1}`} className="text-blue-600 hover:underline">{CONTACT.phone1}</a>
-          {' '}/{' '}
-          <a href={`tel:${CONTACT.phone2}`} className="text-blue-600 hover:underline">{CONTACT.phone2}</a>
+          Ya directly call karein{' '}
+          <a href={`tel:${CONTACT.phone1}`} className="text-blue-600 hover:underline">
+            {CONTACT.phone1}
+          </a>{' '}
+          /{' '}
+          <a href={`tel:${CONTACT.phone2}`} className="text-blue-600 hover:underline">
+            {CONTACT.phone2}
+          </a>
         </p>
       </form>
     </div>
   )
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 18afc02104a17f47e0666bbfa449ac03fefd4821

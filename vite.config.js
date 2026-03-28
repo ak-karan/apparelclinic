@@ -3,7 +3,6 @@ import react from '@vitejs/plugin-react'
 
 export default defineConfig({
   plugins: [react()],
-<<<<<<< HEAD
   base: '/',
   server: {
     proxy: {
@@ -14,7 +13,3 @@ export default defineConfig({
     },
   },
 })
-=======
-  base: '/'
-})
->>>>>>> 18afc02104a17f47e0666bbfa449ac03fefd4821

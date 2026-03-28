@@ -5,11 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-<<<<<<< HEAD
     "server": "node server.js",
     "dev:full": "node scripts/dev.js",
-=======
->>>>>>> 18afc02104a17f47e0666bbfa449ac03fefd4821
     "build": "vite build",
     "preview": "vite preview"
   },
