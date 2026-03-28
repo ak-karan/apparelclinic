@@ -68,7 +68,7 @@ export default function PickupForm() {
             <label className="mb-1 block text-xs text-gray-500">Full Name *</label>
             <input
               className="w-full rounded-xl border border-gray-200 px-4 py-3 text-sm outline-none transition-all focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
-              placeholder="Apna naam daalo"
+              placeholder="Your Name"
               required
               value={form.name}
               onChange={set('name')}
@@ -152,7 +152,7 @@ export default function PickupForm() {
         </motion.button>
 
         <p className="text-center text-xs text-gray-500">
-          Ya directly call karein{' '}
+          Call Now {' '}
           <a href={`tel:${CONTACT.phone1}`} className="text-blue-600 hover:underline">
             {CONTACT.phone1}
           </a>{' '}

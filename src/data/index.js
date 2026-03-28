@@ -1,8 +1,8 @@
 // src/data.js
 
 export const CONTACT = {
-  phone1: '+91-9599057984',
-  phone2: '+91-9818715642',
+  phone1: '+91-9818715642',
+  phone2: '+91-9599057984',
   whatsapp: 'https://wa.me/919599057984',
   email: 'akashkaran83@gmail.com',
   address: 'Tower 20, Royal Heritage, Premium Park, Faridabad, Haryana 121007',

@@ -1,13 +1,13 @@
-import { motion, useAnimation } from 'framer-motion'
-import { useRef, useEffect, useState, useCallback, useMemo } from 'react'
-import { Star } from 'lucide-react'
+import { motion } from 'framer-motion'
+import { useCallback, useEffect, useRef, useState } from 'react'
+import { ChevronLeft, ChevronRight, Star } from 'lucide-react'
 import ReviewCard from './ReviewCard'
 
 const fadeUp = (delay = 0) => ({
   initial: { opacity: 0, y: 20 },
   whileInView: { opacity: 1, y: 0 },
-  viewport: { once: true, margin: "-50px" },
-  transition: { duration: 0.5, delay }
+  viewport: { once: true, margin: '-50px' },
+  transition: { duration: 0.5, delay },
 })
 
 const REVIEWS = [
@@ -16,179 +16,199 @@ const REVIEWS = [
     rating: 5,
     text: 'Excellent service! My silk sarees came back looking like new. The staff is very professional and careful with delicate fabrics.',
     date: '2 days ago',
-    verified: true
+    verified: true,
   },
   {
     name: 'Rahul Verma',
     rating: 5,
     text: 'Best laundry service in Faridabad. They picked up and delivered on time. My formal shirts are perfectly ironed.',
     date: '1 week ago',
-    verified: true
+    verified: true,
   },
   {
     name: 'Neha Gupta',
     rating: 4,
     text: 'Very happy with the dry cleaning service. They removed tough stains from my curtains. Reasonable prices.',
     date: '3 days ago',
-    verified: true
+    verified: true,
   },
   {
     name: 'Amit Kumar',
     rating: 5,
     text: 'Regular customer for 2 years now. Never disappointed. Their shoe cleaning service is amazing!',
     date: '5 days ago',
-    verified: true
+    verified: true,
   },
   {
     name: 'Sneha Reddy',
     rating: 5,
     text: 'Great experience! They even fixed a loose button on my shirt for free. Will definitely recommend.',
     date: '1 day ago',
-    verified: false
+    verified: false,
   },
   {
     name: 'Vikram Singh',
     rating: 4,
-    text: 'Good quality service. The app is easy to use and scheduling is convenient. Keep it up!',
+    text: 'Good quality service. Scheduling is convenient and delivery was right on time. Keep it up!',
     date: '2 weeks ago',
-    verified: true
-  }
+    verified: true,
+  },
 ]
 
 function Reviews() {
   const carouselRef = useRef(null)
-  const [width, setWidth] = useState(0)
-  const [isHovering, setIsHovering] = useState(false)
   const [currentSlide, setCurrentSlide] = useState(0)
-  const controls = useAnimation()
 
-  const allReviews = useMemo(() => [...REVIEWS, ...REVIEWS, ...REVIEWS], [])
-
-  useEffect(() => {
-    if (carouselRef.current) {
-      setWidth(carouselRef.current.scrollWidth - carouselRef.current.offsetWidth)
+  const updateCurrentSlide = useCallback(() => {
+    if (!carouselRef.current) {
+      return
     }
+
+    const cards = carouselRef.current.querySelectorAll('[data-review-card]')
+    if (!cards.length) {
+      return
+    }
+
+    const containerLeft = carouselRef.current.getBoundingClientRect().left
+    let nearestIndex = 0
+    let nearestOffset = Number.POSITIVE_INFINITY
+
+    cards.forEach((card, index) => {
+      const offset = Math.abs(card.getBoundingClientRect().left - containerLeft)
+      if (offset < nearestOffset) {
+        nearestOffset = offset
+        nearestIndex = index
+      }
+    })
+
+    setCurrentSlide(nearestIndex)
   }, [])
 
   useEffect(() => {
-    if (!isHovering && width > 0) {
-      controls.start({
-        x: [-width / 3, -width * 2/3],
-        transition: {
-          x: {
-            repeat: Infinity,
-            repeatType: "loop",
-            duration: 30,
-            ease: "linear"
-          }
-        }
-      })
-    } else {
-      controls.stop()
-    }
-  }, [isHovering, width, controls])
+    updateCurrentSlide()
+    window.addEventListener('resize', updateCurrentSlide)
+    return () => window.removeEventListener('resize', updateCurrentSlide)
+  }, [updateCurrentSlide])
 
   const scrollToSlide = useCallback((index) => {
-    if (carouselRef.current) {
-      const cardWidth = window.innerWidth < 640 ? 300 : 350
-      const gap = 20
-      const scrollAmount = index * (cardWidth + gap)
-      carouselRef.current.scrollTo({ left: scrollAmount, behavior: 'smooth' })
-      setCurrentSlide(index)
+    if (!carouselRef.current) {
+      return
     }
-  }, [])
 
-  const handleScroll = useCallback(() => {
-    if (carouselRef.current) {
-      const scrollLeft = carouselRef.current.scrollLeft
-      const cardWidth = window.innerWidth < 640 ? 300 : 350
-      const gap = 20
-      const slideIndex = Math.round(scrollLeft / (cardWidth + gap))
-      setCurrentSlide(slideIndex % REVIEWS.length)
+    const safeIndex = Math.max(0, Math.min(index, REVIEWS.length - 1))
+    const cards = carouselRef.current.querySelectorAll('[data-review-card]')
+    const target = cards[safeIndex]
+
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' })
+      setCurrentSlide(safeIndex)
     }
   }, [])
 
   return (
-    <section className="section-pad relative overflow-hidden" style={{ background: 'var(--bg-2)' }}>
-      <div className="absolute inset-0 opacity-30 pointer-events-none">
-        <div className="absolute top-0 left-0 w-64 h-64 bg-blue-500 rounded-full filter blur-3xl opacity-10" />
-        <div className="absolute bottom-0 right-0 w-64 h-64 bg-blue-400 rounded-full filter blur-3xl opacity-10" />
-      </div>
-
+    <section
+      className="section-pad relative overflow-hidden"
+      style={{
+        background:
+          'radial-gradient(circle at top left, rgba(37,99,235,0.10), transparent 28%), radial-gradient(circle at bottom right, rgba(59,130,246,0.08), transparent 26%), var(--bg-2)',
+      }}
+    >
       <div className="container-app relative z-10">
-        <motion.div {...fadeUp()} className="text-center mb-10 lg:mb-14">
-          <span className="section-label">
-            ⭐ Client Reviews
-          </span>
-          <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold mt-4">
+        <motion.div {...fadeUp()} className="mb-10 text-center lg:mb-14">
+          <span className="section-label">Client Reviews</span>
+          <h2 className="mt-4 font-heading text-3xl font-bold md:text-4xl lg:text-5xl">
             What Our <span className="gradient-text">Customers Say</span>
           </h2>
-          <p className="mt-4 max-w-2xl mx-auto text-sm sm:text-base text-gray-600">
-            50,000+ satisfied customers across Faridabad & Premium Park
+          <p className="mx-auto mt-4 max-w-2xl text-sm text-gray-600 sm:text-base">
+            Trusted by thousands of families for premium laundry, dry cleaning, and doorstep pickup across Faridabad.
           </p>
         </motion.div>
 
-        <div className="flex flex-col sm:flex-row justify-between items-center gap-4 mb-6">
-          <div className="flex gap-2">
-            <button onClick={() => scrollToSlide(currentSlide - 1)}
-              disabled={currentSlide === 0}
-              className="p-2 rounded-full bg-white border border-gray-200 shadow-md hover:shadow-lg transition-all hover:scale-110 disabled:opacity-50">
-              ←
-            </button>
-            <button onClick={() => scrollToSlide(currentSlide + 1)}
-              disabled={currentSlide >= REVIEWS.length - 1}
-              className="p-2 rounded-full bg-white border border-gray-200 shadow-md hover:shadow-lg transition-all hover:scale-110 disabled:opacity-50">
-              →
-            </button>
-          </div>
-
-          <motion.div className="flex items-center gap-3 bg-white border border-gray-200 px-4 py-2 rounded-full shadow-sm">
-            <div className="flex items-center gap-1">
-              {[1,2,3,4,5].map((star) => (
-                <Star key={star} size={16} className="fill-blue-500 text-blue-500" />
+        <motion.div
+          {...fadeUp(0.1)}
+          className="mb-8 flex flex-col gap-4 rounded-[28px] border p-4 shadow-sm lg:flex-row lg:items-center lg:justify-between lg:p-5"
+          style={{
+            background: 'rgba(255,255,255,0.82)',
+            borderColor: 'rgba(37, 99, 235, 0.1)',
+            backdropFilter: 'blur(14px)',
+          }}
+        >
+          <div className="flex items-center gap-3">
+            <div className="flex items-center gap-1 rounded-full bg-blue-50 px-3 py-2">
+              {[1, 2, 3, 4, 5].map((star) => (
+                <Star key={star} size={15} className="fill-amber-400 text-amber-400" />
               ))}
             </div>
-            <span className="text-sm font-medium text-gray-700">4.8/5 (50k+ reviews)</span>
-          </motion.div>
-        </div>
+            <div>
+              <div className="text-sm font-semibold text-slate-900">Rated 4.8 out of 5</div>
+              <div className="text-xs text-slate-500">Based on 50+ customer experiences</div>
+            </div>
+          </div>
 
-        <motion.div ref={carouselRef}
-          className="cursor-grab active:cursor-grabbing overflow-x-auto pb-6 hide-scrollbar"
-          onScroll={handleScroll}
-          onHoverStart={() => setIsHovering(true)}
-          onHoverEnd={() => setIsHovering(false)}>
-          <motion.div drag="x" dragConstraints={{ right: 0, left: -width }}
-            whileTap={{ cursor: "grabbing" }} animate={controls}
-            className="flex gap-5">
-            {allReviews.map((review, index) => (
-              <ReviewCard key={index} review={review} index={index % REVIEWS.length} />
-            ))}
-          </motion.div>
+          <div className="flex items-center gap-2 self-start lg:self-auto">
+            <button
+              type="button"
+              onClick={() => scrollToSlide(currentSlide - 1)}
+              disabled={currentSlide === 0}
+              className="flex h-11 w-11 items-center justify-center rounded-full border bg-white text-slate-700 shadow-sm transition-all hover:-translate-y-0.5 hover:border-blue-300 hover:text-blue-600 disabled:cursor-not-allowed disabled:opacity-40"
+            >
+              <ChevronLeft size={18} />
+            </button>
+            <button
+              type="button"
+              onClick={() => scrollToSlide(currentSlide + 1)}
+              disabled={currentSlide === REVIEWS.length - 1}
+              className="flex h-11 w-11 items-center justify-center rounded-full border bg-white text-slate-700 shadow-sm transition-all hover:-translate-y-0.5 hover:border-blue-300 hover:text-blue-600 disabled:cursor-not-allowed disabled:opacity-40"
+            >
+              <ChevronRight size={18} />
+            </button>
+          </div>
         </motion.div>
 
-        <div className="flex justify-center gap-2 mt-6">
-          {REVIEWS.map((_, index) => (
-            <button key={index} onClick={() => scrollToSlide(index)}
-              className={`h-2 rounded-full transition-all ${
-                currentSlide === index 
-                  ? 'w-8 bg-blue-600' 
-                  : 'w-2 bg-gray-300 hover:bg-blue-400'
-              }`}
-              aria-label={`Go to slide ${index + 1}`} />
+        <div
+          ref={carouselRef}
+          onScroll={updateCurrentSlide}
+          className="flex snap-x snap-mandatory gap-5 overflow-x-auto pb-4 hide-scrollbar"
+        >
+          {REVIEWS.map((review, index) => (
+            <div key={`${review.name}-${index}`} data-review-card className="flex">
+              <ReviewCard review={review} index={index} />
+            </div>
           ))}
         </div>
 
-        <motion.div {...fadeUp(0.3)}
-          className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-12 pt-8 border-t border-gray-200">
+        <div className="mt-6 flex justify-center gap-2">
+          {REVIEWS.map((_, index) => (
+            <button
+              key={index}
+              type="button"
+              onClick={() => scrollToSlide(index)}
+              className={`rounded-full transition-all ${
+                currentSlide === index ? 'h-2 w-8 bg-blue-600' : 'h-2 w-2 bg-slate-300 hover:bg-blue-400'
+              }`}
+              aria-label={`Go to review ${index + 1}`}
+            />
+          ))}
+        </div>
+
+        <motion.div
+          {...fadeUp(0.2)}
+          className="mt-12 grid grid-cols-2 gap-4 border-t border-gray-200 pt-8 md:grid-cols-4"
+        >
           {[
-            { label: 'Total Reviews', value: '52.3K' },
-            { label: 'Average Rating', value: '4.8 ★' },
-            { label: 'Happy Clients', value: '50K+' },
-            { label: 'Trusted Since', value: '2019' }
-          ].map((stat, i) => (
-            <motion.div key={i} className="text-center" whileHover={{ scale: 1.05 }}>
+            { label: 'Total Reviews', value: '50+' },
+            { label: 'Average Rating', value: '4.8/5' },
+            { label: 'Repeat Customers', value: '91%' },
+            { label: 'Trusted Since', value: '2026' },
+          ].map((stat, index) => (
+            <motion.div
+              key={stat.label}
+              whileHover={{ y: -4 }}
+              className="rounded-3xl border bg-white/80 px-4 py-5 text-center shadow-sm"
+              style={{ borderColor: 'rgba(37, 99, 235, 0.08)' }}
+            >
               <div className="text-2xl font-bold text-blue-600">{stat.value}</div>
-              <div className="text-xs text-gray-500 mt-1">{stat.label}</div>
+              <div className="mt-1 text-xs text-gray-500">{stat.label}</div>
             </motion.div>
           ))}
         </motion.div>

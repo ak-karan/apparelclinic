@@ -28,7 +28,7 @@ const homeSchemas = [
     itemListElement: [
       { '@type': 'Offer', name: 'Organic Wash', price: '110', priceCurrency: 'INR' },
       { '@type': 'Offer', name: 'Normal Wash', price: '75', priceCurrency: 'INR' },
-      { '@type': 'Offer', name: 'Steam Pressing', price: '5', priceCurrency: 'INR' },
+      { '@type': 'Offer', name: 'Steam Pressing', price: '10', priceCurrency: 'INR' },
       { '@type': 'Offer', name: 'Shoe Spa', price: '250', priceCurrency: 'INR' },
     ],
   },
@@ -72,8 +72,8 @@ function Hero() {
               className="font-heading text-5xl md:text-6xl xl:text-7xl font-bold mt-4 mb-6 text-gray-900"
               style={{ lineHeight: 1.1 }}>
               Premium<br />
-              <span className="gradient-text">Laundry</span> &<br />
-              Dry Clean
+              <span className="gradient-text">Dry Clean</span> &<br />
+              Laundry
             </motion.h1>
             <motion.p {...fadeUp(0.2)} className="text-lg mb-8 max-w-lg text-gray-600">
               We deal to heal the life of your outfits. Nourish your fabrics with steam ironing and organic cleaning — not harmful chemicals.
@@ -120,10 +120,10 @@ function StatsBanner() {
       <div className="container-app py-8">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
           {[
-            ['25+', 'Years Experience'],
-            ['50K+', 'Happy Customers'],
-            ['24/7', 'Service Available'],
-            ['100%', 'Satisfaction']
+            ['5+', 'Years Experience'],
+            ['500+', 'Happy Customers'],
+            ['25', 'Years Industrial Washing Experience'],
+            ['99%', 'Satisfaction']
           ].map(([num, label], i) => (
             <motion.div 
               key={i} 
@@ -189,7 +189,7 @@ function AboutSnapshot() {
             {[
               { title: 'Organic Wash', value: '₹110/kg', sub: 'Enzyme-based' },
               { title: 'Normal Wash', value: '₹75/kg', sub: 'Standard quality' },
-              { title: 'Steam Pressing', value: '₹5/pcs', sub: 'Professional finish' },
+              { title: 'Steam Pressing', value: '₹10/pcs', sub: 'Professional finish' },
               { title: 'Shoe Spa', value: '₹250+', sub: 'Branded shoes' },
             ].map((c, i) => (
               <motion.div 

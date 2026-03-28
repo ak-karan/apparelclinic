@@ -91,9 +91,9 @@ export default function Contact() {
                   >
                     <div
                       className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-xl"
-                      style={{ background: 'rgba(84,185,99,0.15)' }}
+                      style={{ background: 'rgba(37, 99, 235, 0.12)' }}
                     >
-                      <Icon size={20} style={{ color: 'var(--green)' }} />
+                      <Icon size={20} style={{ color: 'var(--primary)' }} />
                     </div>
                     <div>
                       <div className="mb-1 text-sm font-semibold" style={{ color: 'var(--heading)' }}>
@@ -125,9 +125,9 @@ export default function Contact() {
                     animate={{ opacity: 1, y: 0 }}
                     className="mb-4 flex items-center gap-2 rounded-xl px-4 py-3 text-sm"
                     style={{
-                      background: 'rgba(84,185,99,0.1)',
-                      border: '1px solid rgba(84,185,99,0.4)',
-                      color: 'var(--green)',
+                      background: 'rgba(37, 99, 235, 0.08)',
+                      border: '1px solid rgba(37, 99, 235, 0.25)',
+                      color: 'var(--primary-dark)',
                     }}
                   >
                     <CheckCircle size={15} /> {successMsg || 'Message sent! Hum jald hi contact karenge.'}
@@ -157,7 +157,7 @@ export default function Contact() {
                       <label className="mb-1 block text-xs" style={{ color: 'var(--text)' }}>
                         Name *
                       </label>
-                      <input className="input-field" placeholder="Apna naam" required value={form.name} onChange={set('name')} />
+                      <input className="input-field" placeholder="Your Name" required value={form.name} onChange={set('name')} />
                     </div>
                     <div>
                       <label className="mb-1 block text-xs" style={{ color: 'var(--text)' }}>
@@ -193,7 +193,7 @@ export default function Contact() {
                     <textarea
                       className="input-field resize-none"
                       rows={4}
-                      placeholder="Apni requirement describe karein..."
+                      placeholder="Please describe your requirement…"
                       value={form.message}
                       onChange={set('message')}
                     />
@@ -202,8 +202,12 @@ export default function Contact() {
                   <motion.button
                     type="submit"
                     disabled={loading}
-                    className="w-full rounded-xl py-3.5 text-sm font-semibold disabled:opacity-60"
-                    style={{ background: 'var(--green)', color: 'var(--bg)' }}
+                    className="w-full rounded-xl py-3.5 text-sm font-semibold text-white shadow-sm transition-all duration-200 disabled:cursor-not-allowed disabled:opacity-60"
+                    style={{
+                      background: loading ? 'var(--primary-light)' : 'var(--primary)',
+                      color: '#ffffff',
+                      boxShadow: '0 12px 30px rgba(37, 99, 235, 0.22)',
+                    }}
                     whileHover={{ scale: loading ? 1 : 1.02 }}
                     whileTap={{ scale: 0.98 }}
                   >
@@ -211,8 +215,8 @@ export default function Contact() {
                   </motion.button>
 
                   <p className="text-center text-xs" style={{ color: 'var(--text)' }}>
-                    Ya directly call karein{' '}
-                    <a href={`tel:${CONTACT.phone1}`} style={{ color: 'var(--green)' }}>
+                    Call Now{' '}
+                    <a href={`tel:${CONTACT.phone1}`} style={{ color: 'var(--primary)' }}>
                       {CONTACT.phone1}
                     </a>
                   </p>

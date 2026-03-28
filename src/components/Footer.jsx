@@ -92,11 +92,23 @@ export default function Footer() {
 
         <div className="mt-12 pt-6 flex flex-col md:flex-row justify-between items-center gap-4 border-t border-gray-200">
           <p className="text-xs text-gray-500">
-            © 2024 Apparel Clinic. All rights reserved.
+            © 2026 Apparel Clinic. All rights reserved.
           </p>
-          <div className="flex gap-6">
+          <a
+              href="https://dreams4u.in"
+              target="_blank"
+              rel="noreferrer"
+              className="group inline-flex items-center gap-1 text-xs text-gray-500 transition-colors hover:text-blue-600"
+            >
+              <span>Designed by</span>
+              <span className="font-semibold text-blue-600 underline decoration-blue-200 underline-offset-4 transition-colors group-hover:decoration-blue-500">
+                Dreams4u
+              </span>
+            </a>
+          <div className="flex flex-col items-center gap-3 md:flex-row md:gap-6">
             <Link to="/terms" className="text-xs hover:text-blue-600 transition-colors text-gray-500">Terms & Conditions</Link>
-            <Link to="/faq" className="text-xs hover:text-blue-600 transition-colors text-gray-500">FAQ</Link>
+            <Link to="/faq" className="text-xs hover:text-blue-600 transition-colors text-gray-500 mr-20">FAQ</Link>
+            
           </div>
         </div>
       </div>

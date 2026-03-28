@@ -7,24 +7,24 @@ const SITE = {
   phone2: '+91-9818715642',
   address: 'Tower 20, Royal Heritage, Premium Park, Faridabad, Haryana 121007',
   email: 'akashkaran83@gmail.com',
-  logo: 'https://apparelclinic.in/logo.png',
-  image: 'https://apparelclinic.in/og-image.jpg',
+  logo: 'https://apparelclinic.in/favicon.svg',
+  image: 'https://apparelclinic.in/og-image.svg',
 }
 
-// ── Base LocalBusiness schema (used on every page) ───────────────────────────
 const localBusinessSchema = {
   '@context': 'https://schema.org',
   '@type': 'LocalBusiness',
   '@id': `${SITE.url}/#business`,
   name: SITE.name,
-  description: 'Premium Perc & Laundry Specialists — 25 years industrial experience in dry cleaning, organic wash, shoe cleaning, and garment care.',
+  description:
+    'Premium perc and laundry specialists with 25 years of experience in dry cleaning, organic wash, shoe cleaning, and garment care.',
   url: SITE.url,
   telephone: [SITE.phone1, SITE.phone2],
   email: SITE.email,
   logo: SITE.logo,
   image: SITE.image,
   foundingDate: '1999',
-  priceRange: '₹₹',
+  priceRange: 'INR',
   currenciesAccepted: 'INR',
   paymentAccepted: 'Cash, UPI, Bank Transfer',
   openingHours: 'Mo-Su 00:00-23:59',
@@ -54,49 +54,58 @@ const localBusinessSchema = {
   ],
 }
 
-// ── Website schema ────────────────────────────────────────────────────────────
 const websiteSchema = {
   '@context': 'https://schema.org',
   '@type': 'WebSite',
   '@id': `${SITE.url}/#website`,
   url: SITE.url,
   name: SITE.name,
-  description: 'Best Laundry & Dry Clean Service in Faridabad — 25 Years Experience',
+  description: 'Best laundry and dry clean service in Faridabad',
   potentialAction: {
     '@type': 'SearchAction',
-    target: { '@type': 'EntryPoint', urlTemplate: `${SITE.url}/pages/pricing?search={search_term_string}` },
+    target: {
+      '@type': 'EntryPoint',
+      urlTemplate: `${SITE.url}/pricing?search={search_term_string}`,
+    },
     'query-input': 'required name=search_term_string',
   },
 }
 
-// ── Breadcrumb builder ────────────────────────────────────────────────────────
 const buildBreadcrumb = (items) => ({
   '@context': 'https://schema.org',
   '@type': 'BreadcrumbList',
   itemListElement: [
     { '@type': 'ListItem', position: 1, name: 'Home', item: SITE.url },
-    ...items.map((item, i) => ({
+    ...items.map((item, index) => ({
       '@type': 'ListItem',
-      position: i + 2,
+      position: index + 2,
       name: item.name,
       item: `${SITE.url}${item.path}`,
     })),
   ],
 })
 
-// ── FAQ schema builder ────────────────────────────────────────────────────────
 export const buildFAQSchema = (faqs) => ({
   '@context': 'https://schema.org',
   '@type': 'FAQPage',
-  mainEntity: faqs.map((f) => ({
+  mainEntity: faqs.map((item) => ({
     '@type': 'Question',
-    name: f.q,
-    acceptedAnswer: { '@type': 'Answer', text: f.a },
+    name: item.q,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: item.a,
+    },
   })),
 })
 
-// ── Service schema builder ────────────────────────────────────────────────────
-export const buildServiceSchema = ({ name, description, url, price, priceCurrency = 'INR', priceUnit }) => ({
+export const buildServiceSchema = ({
+  name,
+  description,
+  url,
+  price,
+  priceCurrency = 'INR',
+  priceUnit,
+}) => ({
   '@context': 'https://schema.org',
   '@type': 'Service',
   name,
@@ -111,85 +120,101 @@ export const buildServiceSchema = ({ name, description, url, price, priceCurrenc
     '@type': 'City',
     name: 'Faridabad',
   },
-  ...(price && {
-    offers: {
-      '@type': 'Offer',
-      price,
-      priceCurrency,
-      priceSpecification: priceUnit ? { '@type': 'UnitPriceSpecification', unitCode: priceUnit } : undefined,
-    },
-  }),
+  ...(price
+    ? {
+        offers: {
+          '@type': 'Offer',
+          price,
+          priceCurrency,
+          ...(priceUnit
+            ? {
+                priceSpecification: {
+                  '@type': 'UnitPriceSpecification',
+                  unitCode: priceUnit,
+                },
+              }
+            : {}),
+        },
+      }
+    : {}),
 })
 
-// ── Review schema builder ─────────────────────────────────────────────────────
 export const buildReviewSchema = (reviews) => ({
   '@context': 'https://schema.org',
   '@type': 'ItemList',
-  itemListElement: reviews.map((r, i) => ({
+  itemListElement: reviews.map((review, index) => ({
     '@type': 'ListItem',
-    position: i + 1,
+    position: index + 1,
     item: {
       '@type': 'Review',
-      reviewBody: r.text,
-      reviewRating: { '@type': 'Rating', ratingValue: r.rating, bestRating: 5 },
-      author: { '@type': 'Person', name: r.name },
-      itemReviewed: { '@type': 'LocalBusiness', '@id': `${SITE.url}/#business` },
+      reviewBody: review.text,
+      reviewRating: {
+        '@type': 'Rating',
+        ratingValue: review.rating,
+        bestRating: 5,
+      },
+      author: {
+        '@type': 'Person',
+        name: review.name,
+      },
+      itemReviewed: {
+        '@type': 'LocalBusiness',
+        '@id': `${SITE.url}/#business`,
+      },
     },
   })),
 })
 
-// ── Main SEO component ────────────────────────────────────────────────────────
 const SEO = ({
   title,
   description,
   keywords,
   canonical,
   ogImage,
-  schemas = [],           // array of extra JSON-LD objects
+  schemas = [],
   noindex = false,
 }) => {
-  const fullTitle = `${title} | Apparel Clinic — Faridabad`
+  const fullTitle = `${title} | Apparel Clinic - Faridabad`
   const canonicalUrl = canonical ? `${SITE.url}${canonical}` : SITE.url
   const image = ogImage || SITE.image
-
-  // Always inject base schemas
   const allSchemas = [localBusinessSchema, websiteSchema, ...schemas]
 
   return (
     <Helmet>
-      {/* ── Basic ── */}
       <title>{fullTitle}</title>
       <meta name="description" content={description} />
       {keywords && <meta name="keywords" content={keywords} />}
+      <meta
+        name="robots"
+        content={noindex ? 'noindex, nofollow' : 'index, follow, max-image-preview:large'}
+      />
+      <meta name="author" content={SITE.name} />
       <link rel="canonical" href={canonicalUrl} />
-      {noindex && <meta name="robots" content="noindex, nofollow" />}
 
-      {/* ── Open Graph ── */}
       <meta property="og:type" content="website" />
       <meta property="og:url" content={canonicalUrl} />
       <meta property="og:title" content={fullTitle} />
       <meta property="og:description" content={description} />
       <meta property="og:image" content={image} />
+      <meta property="og:image:alt" content={`${title} | ${SITE.name}`} />
       <meta property="og:image:width" content="1200" />
       <meta property="og:image:height" content="630" />
       <meta property="og:site_name" content={SITE.name} />
       <meta property="og:locale" content="en_IN" />
 
-      {/* ── Twitter Card ── */}
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={fullTitle} />
       <meta name="twitter:description" content={description} />
       <meta name="twitter:image" content={image} />
+      <meta name="twitter:image:alt" content={`${title} | ${SITE.name}`} />
 
-      {/* ── Geo meta ── */}
       <meta name="geo.region" content="IN-HR" />
       <meta name="geo.placename" content="Faridabad" />
       <meta name="geo.position" content="28.4089;77.3178" />
       <meta name="ICBM" content="28.4089, 77.3178" />
 
-      {/* ── Schema.org JSON-LD ── */}
-      {allSchemas.map((schema, i) => (
-        <script key={i} type="application/ld+json">
+      {allSchemas.map((schema, index) => (
+        <script key={index} type="application/ld+json">
           {JSON.stringify(schema)}
         </script>
       ))}

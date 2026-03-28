@@ -1,10 +1,11 @@
-import React, { lazy, Suspense } from 'react'
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { lazy, Suspense } from 'react'
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import { HelmetProvider } from 'react-helmet-async'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import ScrollToTop from './components/ScrollToTop'
 import WhatsAppButton from './components/WhatsAppButton'
+import BackToTopButton from './components/BackToTopButton'
 import PageLoader from './components/PageLoader'
 
 const Home = lazy(() => import('./pages/Home'))
@@ -14,6 +15,7 @@ const PrepaidPlans = lazy(() => import('./pages/PrepaidPlans'))
 const FAQ = lazy(() => import('./pages/FAQ'))
 const Terms = lazy(() => import('./pages/Terms'))
 const Contact = lazy(() => import('./pages/Contact'))
+const NotFound = lazy(() => import('./pages/NotFound'))
 
 const Laundry = lazy(() => import('./pages/services/Laundry'))
 const OrganicDryCleaning = lazy(() => import('./pages/services/OrganicDryCleaning'))
@@ -25,6 +27,26 @@ const SofaCleaning = lazy(() => import('./pages/services/SofaCleaning'))
 const CarpetCleaning = lazy(() => import('./pages/services/CarpetCleaning'))
 const SteamIroning = lazy(() => import('./pages/services/SteamIroning'))
 
+const routes = [
+  { path: '/', element: <Home /> },
+  { path: '/about', element: <About /> },
+  { path: '/pricing', element: <Pricing /> },
+  { path: '/prepaid-plans', element: <PrepaidPlans /> },
+  { path: '/faq', element: <FAQ /> },
+  { path: '/terms', element: <Terms /> },
+  { path: '/contact', element: <Contact /> },
+  { path: '/services/laundry', element: <Laundry /> },
+  { path: '/services/organic-dry-cleaning', element: <OrganicDryCleaning /> },
+  { path: '/services/dry-cleaning', element: <DryCleaning /> },
+  { path: '/services/shoe-cleaning', element: <ShoeCleaning /> },
+  { path: '/services/jacket-cleaning', element: <JacketCleaning /> },
+  { path: '/services/bag-cleaning', element: <BagCleaning /> },
+  { path: '/services/sofa-cleaning', element: <SofaCleaning /> },
+  { path: '/services/carpet-cleaning', element: <CarpetCleaning /> },
+  { path: '/services/steam-ironing', element: <SteamIroning /> },
+  { path: '*', element: <NotFound /> },
+]
+
 function App() {
   return (
     <HelmetProvider>
@@ -34,24 +56,12 @@ function App() {
           <Navbar />
           <Suspense fallback={<PageLoader />}>
             <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/about" element={<About />} />
-              <Route path="/pricing" element={<Pricing />} />
-              <Route path="/prepaid-plans" element={<PrepaidPlans />} />
-              <Route path="/faq" element={<FAQ />} />
-              <Route path="/terms" element={<Terms />} />
-              <Route path="/contact" element={<Contact />} />
-              <Route path="/services/laundry" element={<Laundry />} />
-              <Route path="/services/organic-dry-cleaning" element={<OrganicDryCleaning />} />
-              <Route path="/services/dry-cleaning" element={<DryCleaning />} />
-              <Route path="/services/shoe-cleaning" element={<ShoeCleaning />} />
-              <Route path="/services/jacket-cleaning" element={<JacketCleaning />} />
-              <Route path="/services/bag-cleaning" element={<BagCleaning />} />
-              <Route path="/services/sofa-cleaning" element={<SofaCleaning />} />
-              <Route path="/services/carpet-cleaning" element={<CarpetCleaning />} />
-              <Route path="/services/steam-ironing" element={<SteamIroning />} />
+              {routes.map(({ path, element }) => (
+                <Route key={path} path={path} element={element} />
+              ))}
             </Routes>
           </Suspense>
+          <BackToTopButton />
           <WhatsAppButton />
           <Footer />
         </div>

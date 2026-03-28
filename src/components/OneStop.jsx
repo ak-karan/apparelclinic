@@ -120,21 +120,6 @@ function OneStop() {
             <span>→</span>
           </span>
         </motion.div>
-
-        <motion.div {...fadeUp(0.3)}
-          className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-12 pt-8 border-t border-gray-200">
-          {[
-            { label: 'Services', value: '25+' },
-            { label: 'Customers', value: '50K+' },
-            { label: 'Experience', value: '25 Years' },
-            { label: 'Satisfaction', value: '98%' }
-          ].map((stat, i) => (
-            <motion.div key={i} className="text-center" whileHover={{ scale: 1.05 }}>
-              <div className="text-2xl font-bold text-blue-600">{stat.value}</div>
-              <div className="text-xs text-gray-500">{stat.label}</div>
-            </motion.div>
-          ))}
-        </motion.div>
       </div>
     </section>
     </>

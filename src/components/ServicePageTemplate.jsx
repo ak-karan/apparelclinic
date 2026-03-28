@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { Phone } from 'lucide-react'
-import SEO, { buildBreadcrumb, buildServiceSchema } from '../components/SEO'
+import SEO, { buildBreadcrumb, buildFAQSchema, buildServiceSchema } from '../components/SEO'
 import { CONTACT, SERVICES } from '../data'
 
 const fadeUp = (d = 0) => ({ 
@@ -37,6 +37,7 @@ export default function ServicePageTemplate({
       priceCurrency: servicePriceCurrency,
       priceUnit: servicePriceUnit,
     }),
+    faqs?.length ? buildFAQSchema(faqs) : null,
   ].filter(Boolean)
 
   return (
