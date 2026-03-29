@@ -61,7 +61,7 @@ export default function Pricing() {
     <>
       <SEO
         title="Complete Price List — Laundry & Dry Cleaning Rates"
-        description="Full price list for all laundry & dry cleaning services. Organic wash ₹110/kg, normal wash ₹75/kg, pressing ₹5/pcs. Transparent pricing — no hidden charges."
+        description="Full price list for all laundry & dry cleaning services. Organic wash ₹110/kg, normal wash ₹75/kg, pressing ₹10/pcs. Transparent pricing — no hidden charges."
         keywords="laundry price list faridabad, dry cleaning rates, organic wash price, pressing charges, garment cleaning rates"
         canonical="/pricing"
         schemas={pricingSchemas}
@@ -82,7 +82,7 @@ export default function Pricing() {
             {[
               { name: 'Organic Wash', rate: '₹110/kg', color: 'var(--green)' },
               { name: 'Normal Wash', rate: '₹75/kg', color: '#4a9eff' },
-              { name: 'Steam Press', rate: '₹5/pcs', color: '#f59e0b' },
+              { name: 'Steam Press', rate: '₹10/pcs', color: '#f59e0b' },
               { name: 'Dry Clean', rate: '₹160/kg', color: '#a78bfa' },
             ].map((r, i) => (
               <motion.div key={i} {...fadeUp(i * 0.08)} className="card p-5 text-center">
