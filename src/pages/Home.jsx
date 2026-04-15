@@ -237,7 +237,7 @@ function PricesSnapshot() {
               features: ['Standard wash', 'Quick turnaround', 'Machine wash', 'Quality assured'] 
             },
             { 
-              icon: '♨️', name: 'Steam Press', rate: '₹5', unit: '/pcs', 
+              icon: '♨️', name: 'Steam Press', rate: '₹15', unit: '/pcs', 
               features: ['Industrial steam', 'Wrinkle-free', 'All garments', 'Quick service'] 
             },
           ].map((p, i) => (

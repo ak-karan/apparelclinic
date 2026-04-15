@@ -63,7 +63,7 @@ export const SERVICES = [
     slug: 'steam-ironing',
     icon: '♨️',
     title: 'Steam Ironing',
-    desc: 'Professional steam press at ₹5/piece. Crisp, wrinkle-free finish.'
+    desc: 'Professional steam press at ₹15/piece. Crisp, wrinkle-free finish.'
   }
 ]
 
