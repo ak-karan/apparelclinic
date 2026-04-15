@@ -89,7 +89,7 @@ function Hero() {
             <motion.div {...fadeUp(0.4)} className="flex flex-wrap gap-3">
               {[
                 { icon: '🌿', text: 'Organic Wash ₹110/kg' },
-                { icon: '♨️', text: 'Pressing ₹10/pcs' },
+                { icon: '♨️', text: 'Pressing ₹15/pcs' },
                 { icon: '🚚', text: 'Free Pickup above 6kg' },
               ].map((b, i) => (
                 <div key={i} className="flex items-center gap-2 px-3 py-1.5 rounded-full text-xs bg-white border border-gray-200 text-gray-600">
@@ -189,7 +189,7 @@ function AboutSnapshot() {
             {[
               { title: 'Organic Wash', value: '₹110/kg', sub: 'Enzyme-based' },
               { title: 'Normal Wash', value: '₹75/kg', sub: 'Standard quality' },
-              { title: 'Steam Pressing', value: '₹10/pcs', sub: 'Professional finish' },
+              { title: 'Steam Pressing', value: '₹15/pcs', sub: 'Professional finish' },
               { title: 'Shoe Spa', value: '₹250+', sub: 'Branded shoes' },
             ].map((c, i) => (
               <motion.div 
@@ -409,7 +409,7 @@ export default function Home() {
     <>
       <SEO
         title="Best Laundry & Dry Clean Service in Faridabad"
-        description="Apparel Clinic — 25 years experience. Organic wash ₹110/kg, pressing ₹10/pcs, free pickup above 6kg. Serving Faridabad."
+        description="Apparel Clinic — 25 years experience. Organic wash ₹110/kg, pressing ₹15/pcs, free pickup above 6kg. Serving Faridabad."
         keywords="laundry faridabad, dry cleaning faridabad, organic wash"
         canonical="/"
         schemas={homeSchemas}

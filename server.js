@@ -52,12 +52,13 @@ const PORT = Number(process.env.PORT || 3001)
 const EMAIL_USER = process.env.EMAIL_USER
 const EMAIL_PASS = process.env.EMAIL_PASS
 const EMAIL_TO = process.env.EMAIL_TO || EMAIL_USER
+const REVIEWS_FILE = path.resolve(process.cwd(), 'data', 'reviews.json')
 
 function sendJson(res, statusCode, payload) {
   res.writeHead(statusCode, {
     'Content-Type': 'application/json; charset=utf-8',
     'Access-Control-Allow-Origin': '*',
-    'Access-Control-Allow-Methods': 'POST, OPTIONS',
+    'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
     'Access-Control-Allow-Headers': 'Content-Type',
   })
   res.end(JSON.stringify(payload))
@@ -160,11 +161,114 @@ function validatePayload(pathname, data) {
   return null
 }
 
+function ensureReviewsFile() {
+  const directory = path.dirname(REVIEWS_FILE)
+  if (!fs.existsSync(directory)) {
+    fs.mkdirSync(directory, { recursive: true })
+  }
+
+  if (!fs.existsSync(REVIEWS_FILE)) {
+    fs.writeFileSync(REVIEWS_FILE, '[]', 'utf8')
+  }
+}
+
+function readReviews() {
+  ensureReviewsFile()
+
+  try {
+    const raw = fs.readFileSync(REVIEWS_FILE, 'utf8')
+    const parsed = JSON.parse(raw)
+    return Array.isArray(parsed) ? parsed : []
+  } catch {
+    return []
+  }
+}
+
+function writeReviews(reviews) {
+  ensureReviewsFile()
+  fs.writeFileSync(REVIEWS_FILE, JSON.stringify(reviews, null, 2), 'utf8')
+}
+
+function validateReviewPayload(data) {
+  if (!data || typeof data !== 'object') {
+    return 'Invalid request body.'
+  }
+
+  const name = String(data.name || '').trim()
+  const text = String(data.text || '').trim()
+  const rating = Number(data.rating)
+
+  if (!name) {
+    return 'Name is required.'
+  }
+
+  if (!text) {
+    return 'Review description is required.'
+  }
+
+  if (!Number.isInteger(rating) || rating < 1 || rating > 5) {
+    return 'Rating must be between 1 and 5.'
+  }
+
+  return null
+}
+
 const server = http.createServer(async (req, res) => {
   const url = new URL(req.url, `http://${req.headers.host}`)
 
   if (req.method === 'OPTIONS') {
     sendJson(res, 204, {})
+    return
+  }
+
+  if (req.method === 'GET' && url.pathname === '/api/reviews') {
+    sendJson(res, 200, {
+      success: true,
+      reviews: readReviews(),
+    })
+    return
+  }
+
+  if (req.method === 'POST' && url.pathname === '/api/reviews') {
+    try {
+      let rawBody = ''
+      for await (const chunk of req) {
+        rawBody += chunk
+      }
+
+      const data = rawBody ? JSON.parse(rawBody) : {}
+      const validationError = validateReviewPayload(data)
+      if (validationError) {
+        sendJson(res, 400, { success: false, message: validationError })
+        return
+      }
+
+      const reviews = readReviews()
+      const review = {
+        id: `${Date.now()}-${Math.random().toString(36).slice(2, 8)}`,
+        name: String(data.name).trim(),
+        text: String(data.text).trim(),
+        rating: Number(data.rating),
+        date: new Date().toISOString(),
+        verified: true,
+      }
+
+      reviews.unshift(review)
+      writeReviews(reviews)
+
+      sendJson(res, 201, {
+        success: true,
+        message: 'Review submitted successfully.',
+        review,
+        reviews,
+      })
+    } catch (error) {
+      console.error('Review server error:', error)
+      sendJson(res, 500, {
+        success: false,
+        message: 'Review could not be saved. Please try again.',
+      })
+    }
     return
   }
 
