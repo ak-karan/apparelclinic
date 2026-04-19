@@ -49,9 +49,13 @@ function loadEnvFile() {
 loadEnvFile()
 
 const PORT = Number(process.env.PORT || 3001)
-const EMAIL_USER = process.env.EMAIL_USER
-const EMAIL_PASS = process.env.EMAIL_PASS
-const EMAIL_TO = process.env.EMAIL_TO || EMAIL_USER
+function readEnv(name) {
+  return process.env[name]?.trim()
+}
+
+const EMAIL_USER = readEnv('EMAIL_USER')
+const EMAIL_PASS = readEnv('EMAIL_PASS')
+const EMAIL_TO = readEnv('EMAIL_TO') || EMAIL_USER
 const REVIEWS_FILE = path.resolve(process.cwd(), 'data', 'reviews.json')
 
 function sendJson(res, statusCode, payload) {

@@ -1,5 +1,9 @@
 import nodemailer from 'nodemailer'
 
+function readEnv(name) {
+  return process.env[name]?.trim()
+}
+
 function escapeHtml(value = '') {
   return String(value)
     .replaceAll('&', '&amp;')
@@ -10,8 +14,8 @@ function escapeHtml(value = '') {
 }
 
 function createTransporter() {
-  const EMAIL_USER = process.env.EMAIL_USER
-  const EMAIL_PASS = process.env.EMAIL_PASS
+  const EMAIL_USER = readEnv('EMAIL_USER')
+  const EMAIL_PASS = readEnv('EMAIL_PASS')
 
   if (!EMAIL_USER || !EMAIL_PASS) {
     throw new Error('EMAIL_USER or EMAIL_PASS is missing.')
@@ -117,8 +121,8 @@ function validateContactPayload(data) {
 }
 
 async function sendEmail(kind, data) {
-  const EMAIL_USER = process.env.EMAIL_USER
-  const EMAIL_TO = process.env.EMAIL_TO || EMAIL_USER
+  const EMAIL_USER = readEnv('EMAIL_USER')
+  const EMAIL_TO = readEnv('EMAIL_TO') || EMAIL_USER
   const transporter = createTransporter()
   const email = kind === 'pickup' ? buildPickupEmail(data) : buildContactEmail(data)
 
