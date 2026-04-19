@@ -1,0 +1,88 @@
+{
+  "envs": [
+    {
+      "key": "GITHUB_REVIEWS_PATH",
+      "type": "encrypted",
+      "target": [
+        "development",
+        "preview",
+        "production"
+      ],
+      "configurationId": null,
+      "createdAt": 1776486679004,
+      "updatedAt": 1776486679004
+    },
+    {
+      "key": "GITHUB_BRANCH",
+      "type": "encrypted",
+      "target": [
+        "development",
+        "preview",
+        "production"
+      ],
+      "configurationId": null,
+      "createdAt": 1776486650269,
+      "updatedAt": 1776486650269
+    },
+    {
+      "key": "GITHUB_REPO",
+      "type": "encrypted",
+      "target": [
+        "development",
+        "preview",
+        "production"
+      ],
+      "configurationId": null,
+      "createdAt": 1776486622204,
+      "updatedAt": 1776486622204
+    },
+    {
+      "key": "GITHUB_TOKEN",
+      "type": "encrypted",
+      "target": [
+        "production",
+        "preview",
+        "development"
+      ],
+      "configurationId": null,
+      "createdAt": 1776486270668,
+      "updatedAt": 1776486559298
+    },
+    {
+      "key": "EMAIL_USER",
+      "type": "encrypted",
+      "target": [
+        "development",
+        "preview",
+        "production"
+      ],
+      "configurationId": null,
+      "createdAt": 1774694213565,
+      "updatedAt": 1774694213565
+    },
+    {
+      "key": "EMAIL_PASS",
+      "type": "encrypted",
+      "target": [
+        "development",
+        "preview",
+        "production"
+      ],
+      "configurationId": null,
+      "createdAt": 1774694213565,
+      "updatedAt": 1774694213565
+    },
+    {
+      "key": "EMAIL_TO",
+      "type": "encrypted",
+      "target": [
+        "development",
+        "preview",
+        "production"
+      ],
+      "configurationId": null,
+      "createdAt": 1774694213565,
+      "updatedAt": 1774694213565
+    }
+  ]
+}
