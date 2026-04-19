@@ -114,7 +114,7 @@ export default function PickupForm() {
               <option>Shoe Cleaning / Spa</option>
               <option>Jacket Cleaning</option>
               <option>Bag Cleaning</option>
-              <option>Steam Ironing (Rs 5/pcs)</option>
+              <option>Steam Ironing (Rs 15/pcs)</option>
               <option>Sofa / Carpet Cleaning</option>
               <option>Other</option>
             </select>
