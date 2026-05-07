@@ -18,11 +18,11 @@ const contactSchemas = [
     '@context': 'https://schema.org',
     '@type': 'ContactPage',
     name: 'Contact Apparel Clinic',
-    url: 'https://apparelclinic.in/contact',
+    url: 'https://apparelclinic.com/contact',
     description: 'Contact Apparel Clinic for laundry & dry cleaning pickup in Faridabad.',
     mainEntity: {
       '@type': 'LocalBusiness',
-      '@id': 'https://apparelclinic.in/#business',
+      '@id': 'https://apparelclinic.com/#business',
     },
   },
 ]

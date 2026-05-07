@@ -4,14 +4,14 @@ export default function Laundry() {
   return (
     <ServicePageTemplate
       seoTitle="Laundry Service — Organic & Normal Wash"
-      seoDesc="Professional laundry service in Faridabad. Organic wash ₹110/kg, normal wash ₹75/kg. Free pickup above 6kg. Enzyme-based, bio-degradable cleaning."
+      seoDesc="Professional laundry service in Faridabad. Organic wash ₹110/kg, normal wash ₹95/kg. Free pickup above 6kg. Enzyme-based, bio-degradable cleaning."
       seoKeywords="laundry service faridabad, organic wash, normal wash, clothes washing faridabad"
       canonical="/services/laundry"
       badge="👕 Laundry Experts"
       icon="👕"
       title="Laundry Service"
       tagline="Organic & Normal Wash — Clean, Fresh & Nourished"
-      description="We offer premium laundry service using enzyme-based organic chemicals that are gentle on your clothes and safe for your family. Choose between organic wash (₹110/kg) and normal wash (₹75/kg) based on your garment's needs."
+      description="We offer premium laundry service using enzyme-based organic chemicals that are gentle on your clothes and safe for your family. Choose between organic wash (₹110/kg) and normal wash (₹95/kg) based on your garment's needs."
       heroImage="https://images.unsplash.com/photo-1582735689369-4fe89db7114c?w=800&q=70"
       highlights={[
         { icon:'🌿', title:'Enzyme-Based Organic Wash', desc:'Chemical-free, eco-friendly detergents safe for all skin types and delicate fabrics.' },

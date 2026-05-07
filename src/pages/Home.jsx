@@ -188,7 +188,7 @@ function AboutSnapshot() {
           <motion.div {...fadeUp(0.2)} className="grid grid-cols-2 gap-4">
             {[
               { title: 'Organic Wash', value: '₹110/kg', sub: 'Enzyme-based' },
-              { title: 'Normal Wash', value: '₹75/kg', sub: 'Standard quality' },
+              { title: 'Normal Wash', value: '₹95/kg', sub: 'Standard quality' },
               { title: 'Steam Pressing', value: '₹15/pcs', sub: 'Professional finish' },
               { title: 'Shoe Spa', value: '₹250+', sub: 'Branded shoes' },
             ].map((c, i) => (
@@ -233,7 +233,7 @@ function PricesSnapshot() {
               features: ['Enzyme-based', 'Safe for skin', 'Eco-friendly', 'Free pickup'] 
             },
             { 
-              icon: '💧', name: 'Normal Wash', rate: '₹75', unit: '/kg', 
+              icon: '💧', name: 'Normal Wash', rate: '₹95', unit: '/kg', 
               features: ['Standard wash', 'Quick turnaround', 'Machine wash', 'Quality assured'] 
             },
             { 

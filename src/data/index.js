@@ -15,7 +15,7 @@ export const SERVICES = [
     slug: 'laundry',
     icon: '👕',
     title: 'Laundry Service',
-    desc: 'Organic wash ₹110/kg, Normal wash ₹75/kg. Free pickup above 6kg.'
+    desc: 'Organic wash ₹110/kg, Normal wash ₹95/kg. Free pickup above 6kg.'
   },
   {
     slug: 'dry-cleaning',

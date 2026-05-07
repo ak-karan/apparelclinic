@@ -9,7 +9,7 @@ const termsSchemas = [
     '@context': 'https://schema.org',
     '@type': 'WebPage',
     name: 'Terms & Conditions — Apparel Clinic',
-    url: 'https://apparelclinic.in/terms',
+    url: 'https://apparelclinic.com/terms',
     description: 'Terms and conditions for using Apparel Clinic laundry and dry cleaning services.',
     dateModified: '2024-01-01',
   },

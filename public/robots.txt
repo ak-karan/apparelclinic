@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://apparelclinic.in/sitemap.xml
+Host: https://apparelclinic.com
+Sitemap: https://apparelclinic.com/sitemap.xml

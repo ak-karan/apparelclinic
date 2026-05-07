@@ -39,7 +39,7 @@ const pricingSchemas = [
     '@context': 'https://schema.org',
     '@type': 'WebPage',
     name: 'Apparel Clinic Price List — Laundry & Dry Cleaning Rates',
-    url: 'https://apparelclinic.in/pricing',
+    url: 'https://apparelclinic.com/pricing',
     description: 'Complete price list for all laundry and dry cleaning services at Apparel Clinic Faridabad.',
     mainEntity: {
       '@type': 'Table',
@@ -61,7 +61,7 @@ export default function Pricing() {
     <>
       <SEO
         title="Complete Price List — Laundry & Dry Cleaning Rates"
-        description="Full price list for all laundry & dry cleaning services. Organic wash ₹110/kg, normal wash ₹75/kg, pressing ₹15/pcs. Transparent pricing — no hidden charges."
+        description="Full price list for all laundry & dry cleaning services. Organic wash ₹110/kg, normal wash ₹95/kg, pressing ₹15/pcs. Transparent pricing — no hidden charges."
         keywords="laundry price list faridabad, dry cleaning rates, organic wash price, pressing charges, garment cleaning rates"
         canonical="/pricing"
         schemas={pricingSchemas}
@@ -81,7 +81,7 @@ export default function Pricing() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10">
             {[
               { name: 'Organic Wash', rate: '₹110/kg', color: 'var(--green)' },
-              { name: 'Normal Wash', rate: '₹75/kg', color: '#4a9eff' },
+              { name: 'Normal Wash', rate: '₹95/kg', color: '#4a9eff' },
               { name: 'Steam Press', rate: '₹15/pcs', color: '#f59e0b' },
               { name: 'Dry Clean', rate: '₹160/kg', color: '#a78bfa' },
             ].map((r, i) => (

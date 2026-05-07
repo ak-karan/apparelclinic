@@ -2,13 +2,13 @@ import { Helmet } from 'react-helmet-async'
 
 const SITE = {
   name: 'Apparel Clinic',
-  url: 'https://apparelclinic.in',
+  url: 'https://apparelclinic.com',
   phone1: '+91-9599057984',
   phone2: '+91-9818715642',
   address: 'Tower 20, Royal Heritage, Premium Park, Faridabad, Haryana 121007',
-  email: 'akashkaran83@gmail.com',
-  logo: 'https://apparelclinic.in/favicon.svg',
-  image: 'https://apparelclinic.in/og-image.svg',
+  email: 'apparelclinic123@gmail.com',
+  logo: 'https://apparelclinic.com/favicon.svg',
+  image: 'https://apparelclinic.com/og-image.svg',
 }
 
 const localBusinessSchema = {
@@ -69,6 +69,31 @@ const websiteSchema = {
     },
     'query-input': 'required name=search_term_string',
   },
+}
+
+const organizationSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  '@id': `${SITE.url}/#organization`,
+  name: SITE.name,
+  url: SITE.url,
+  logo: SITE.logo,
+  contactPoint: [
+    {
+      '@type': 'ContactPoint',
+      telephone: SITE.phone1,
+      contactType: 'customer service',
+      areaServed: 'IN',
+      availableLanguage: ['en', 'hi'],
+    },
+    {
+      '@type': 'ContactPoint',
+      telephone: SITE.phone2,
+      contactType: 'customer service',
+      areaServed: 'IN',
+      availableLanguage: ['en', 'hi'],
+    },
+  ],
 }
 
 const buildBreadcrumb = (items) => ({
@@ -177,18 +202,38 @@ const SEO = ({
   const fullTitle = `${title} | Apparel Clinic - Faridabad`
   const canonicalUrl = canonical ? `${SITE.url}${canonical}` : SITE.url
   const image = ogImage || SITE.image
-  const allSchemas = [localBusinessSchema, websiteSchema, ...schemas]
+  const webpageSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    '@id': `${canonicalUrl}#webpage`,
+    url: canonicalUrl,
+    name: fullTitle,
+    description,
+    isPartOf: {
+      '@id': `${SITE.url}/#website`,
+    },
+    about: {
+      '@id': `${SITE.url}/#business`,
+    },
+    inLanguage: 'en-IN',
+  }
+  const allSchemas = [localBusinessSchema, organizationSchema, websiteSchema, webpageSchema, ...schemas]
 
   return (
     <Helmet>
+      <html lang="en-IN" />
       <title>{fullTitle}</title>
       <meta name="description" content={description} />
       {keywords && <meta name="keywords" content={keywords} />}
+      <meta name="format-detection" content="telephone=yes" />
+      <meta name="theme-color" content="#2563eb" />
+      <meta name="referrer" content="strict-origin-when-cross-origin" />
       <meta
         name="robots"
         content={noindex ? 'noindex, nofollow' : 'index, follow, max-image-preview:large'}
       />
       <meta name="author" content={SITE.name} />
+      <meta name="publisher" content={SITE.name} />
       <link rel="canonical" href={canonicalUrl} />
 
       <meta property="og:type" content="website" />
@@ -201,6 +246,11 @@ const SEO = ({
       <meta property="og:image:height" content="630" />
       <meta property="og:site_name" content={SITE.name} />
       <meta property="og:locale" content="en_IN" />
+      <meta property="business:contact_data:street_address" content="Tower 20, Royal Heritage, Premium Park" />
+      <meta property="business:contact_data:locality" content="Faridabad" />
+      <meta property="business:contact_data:region" content="Haryana" />
+      <meta property="business:contact_data:postal_code" content="121007" />
+      <meta property="business:contact_data:country_name" content="India" />
 
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={fullTitle} />
