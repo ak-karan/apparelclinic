@@ -21,14 +21,26 @@ function createTransporter() {
     throw new Error('EMAIL_USER or EMAIL_PASS is missing.')
   }
 
+  // Gmail often works best with explicit SMTP config (especially in Vercel/serverless)
+  // and with an App Password (BadCredentials otherwise).
+  const MAIL_HOST = readEnv('EMAIL_HOST') || 'smtp.gmail.com'
+  const MAIL_PORT = Number(readEnv('EMAIL_PORT') || 465)
+  const MAIL_SECURE = String(readEnv('EMAIL_SECURE') || 'true').toLowerCase() === 'true'
+  const MAIL_DEBUG = String(readEnv('MAIL_DEBUG') || '').toLowerCase() === 'true'
+
   return nodemailer.createTransport({
-    service: 'gmail',
+    host: MAIL_HOST,
+    port: MAIL_PORT,
+    secure: MAIL_SECURE,
     auth: {
       user: EMAIL_USER,
       pass: EMAIL_PASS,
     },
+    logger: MAIL_DEBUG,
+    debug: MAIL_DEBUG,
   })
 }
+
 
 function buildPickupEmail(data) {
   const text = [
