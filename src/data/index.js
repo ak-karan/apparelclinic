@@ -4,8 +4,8 @@ export const CONTACT = {
   phone1: '+91-9818715642',
   phone2: '+91-9599057984',
   whatsapp: 'https://wa.me/919599057984',
-  email: 'akashkaran83@gmail.com',
-  address: 'Tower 20, Royal Heritage, Premium Park, Faridabad, Haryana 121007',
+  email: 'apparelclinic123@gmail.com',
+  address: 'Shop No. 14, Aagman Complex, Sector 69, Faridabad, Haryana 121004',
   facebook: 'https://facebook.com/apparelclinic',
   instagram: 'https://instagram.com/apparelclinic'
 }
